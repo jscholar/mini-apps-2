@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
+    "json-server": "^0.16.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1"
   },
@@ -24,7 +25,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "react-dev": "webpack -w",
-    "build-dev": "webpack"
+    "build-dev": "webpack",
+    "start-dev": "json-server --watch ./data/db.json --static ./public",
+    "start": "json-server ./data/db.json --static ./public"
   },
   "author": "",
   "license": "ISC"
