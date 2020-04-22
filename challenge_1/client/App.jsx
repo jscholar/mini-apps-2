@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+import ReactPaginate from 'react-paginate';
 import Events from './components/Events';
 import EventsSearch from './components/EventsSearch';
 
@@ -10,6 +11,7 @@ class App extends Component {
     super();
     this.state = {
       events: [],
+      pageCount: 0,
       query: '',
     };
     this.handleSearch = this.handleSearch.bind(this);
@@ -23,11 +25,11 @@ class App extends Component {
   handleSearch(page) {
     const { query } = this.state;
     searchEvents(query, page)
-      .then((events) => this.setState({ events }));
+      .then(({ events, pageCount }) => this.setState({ events, pageCount }));
   }
 
   render() {
-    const { events } = this.state;
+    const { events, pageCount } = this.state;
     return (
       <div>
         Events in Human History
@@ -35,7 +37,15 @@ class App extends Component {
           searchHandler={this.handleSearch}
           queryChangeHandler={this.handleQueryChange}
         />
-
+        <ReactPaginate
+          pageCount={pageCount}
+          marginPagesDisplayed={2}
+          pageRangeDisplayed={5}
+          onPageChange={({ selected }) => {
+            // ReactPaginate is 0 indexed. json-server is 1 indexed
+            this.handleSearch(selected + 1);
+          }}
+        />
         <Events events={events} />
       </div>
     );

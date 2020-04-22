@@ -9,7 +9,10 @@ export const searchEvents = (query, page = 1) => (
       _limit: 10,
     },
   })
-    .then(({ data }) => data)
+    .then(({ data, headers }) => ({
+      events: data,
+      pageCount: Math.ceil(headers['x-total-count'] / 10),
+    }))
     .catch((reason) => {
       throw new Error('Request failed: ', reason);
     })
