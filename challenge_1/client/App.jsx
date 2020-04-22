@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import Events from './components/Events';
+import EventsSearch from './components/EventsSearch';
+
 
 class App extends Component {
   constructor() {
@@ -15,6 +17,7 @@ class App extends Component {
       <div>
         Events in Human History
         <Events events={events} />
+        <EventsSearch />
       </div>
     );
   }
