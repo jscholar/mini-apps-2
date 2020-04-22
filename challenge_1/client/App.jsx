@@ -2,13 +2,17 @@ import React, { Component } from 'react';
 import Events from './components/Events';
 import EventsSearch from './components/EventsSearch';
 
-
 class App extends Component {
   constructor() {
     super();
     this.state = {
       events: [],
     };
+    this.searchResultHandler = this.searchResultHandler.bind(this);
+  }
+
+  searchResultHandler(events) {
+    this.setState({ events });
   }
 
   render() {
@@ -17,7 +21,7 @@ class App extends Component {
       <div>
         Events in Human History
         <Events events={events} />
-        <EventsSearch />
+        <EventsSearch handleSearchResult={this.searchResultHandler} />
       </div>
     );
   }
