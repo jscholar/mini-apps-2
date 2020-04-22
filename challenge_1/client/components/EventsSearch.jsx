@@ -1,26 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const SearchEvents = ({ searchHandler }) => (
+const SearchEvents = ({ searchHandler, queryChangeHandler }) => (
   <div>
     <input
       type="text"
       name="query"
       placeholder="Search for Events"
+      onChange={({ target }) => queryChangeHandler(target.value)}
       onKeyPress={(e) => {
         if (e.key === 'Enter') {
-          e.stopPropagation();
-          const { value } = e.target;
-          searchHandler(value);
+          searchHandler();
         }
       }}
     />
     <button
       type="submit"
-      onClick={(e) => {
-        const { value } = e.target;
-        searchHandler(value);
-      }}
+      onClick={searchHandler}
     >
       Search
     </button>
@@ -29,10 +25,12 @@ const SearchEvents = ({ searchHandler }) => (
 
 SearchEvents.propTypes = {
   searchHandler: PropTypes.func,
+  queryChangeHandler: PropTypes.func,
 };
 
 SearchEvents.defaultProps = {
   searchHandler: () => {},
+  queryChangeHandler: () => {},
 };
 
 export default SearchEvents;

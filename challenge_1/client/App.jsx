@@ -10,11 +10,18 @@ class App extends Component {
     super();
     this.state = {
       events: [],
+      query: '',
     };
     this.handleSearch = this.handleSearch.bind(this);
+    this.handleQueryChange = this.handleQueryChange.bind(this);
   }
 
-  handleSearch(query, page) {
+  handleQueryChange(query) {
+    this.setState({ query });
+  }
+
+  handleSearch(page) {
+    const { query } = this.state;
     searchEvents(query, page)
       .then((events) => this.setState({ events }));
   }
@@ -24,8 +31,12 @@ class App extends Component {
     return (
       <div>
         Events in Human History
+        <EventsSearch
+          searchHandler={this.handleSearch}
+          queryChangeHandler={this.handleQueryChange}
+        />
+
         <Events events={events} />
-        <EventsSearch searchHandler={this.handleSearch} />
       </div>
     );
   }
