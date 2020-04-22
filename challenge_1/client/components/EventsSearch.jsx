@@ -1,54 +1,38 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
-import { searchEvents } from '../api/events';
-
-class SearchEvents extends Component {
-  constructor(props) {
-    super(props);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
-
-  handleSubmit({ target }) {
-    const { handleSearchResult } = this.props;
-    searchEvents(target.value)
-      .then(handleSearchResult);
-  }
-
-  render() {
-    return (
-      <div>
-
-        <input
-          type="text"
-          name="query"
-          placeholder="Search for Events"
-          onKeyPress={(e) => {
-            if (e.key === 'Enter') {
-              this.handleSubmit(e);
-            }
-          }}
-        />
-
-        <button
-          type="submit"
-          onClick={this.handleSubmit}
-        >
-          Search
-        </button>
-
-      </div>
-
-    );
-  }
-}
+const SearchEvents = ({ searchHandler }) => (
+  <div>
+    <input
+      type="text"
+      name="query"
+      placeholder="Search for Events"
+      onKeyPress={(e) => {
+        if (e.key === 'Enter') {
+          e.stopPropagation();
+          const { value } = e.target;
+          searchHandler(value);
+        }
+      }}
+    />
+    <button
+      type="submit"
+      onClick={(e) => {
+        const { value } = e.target;
+        searchHandler(value);
+      }}
+    >
+      Search
+    </button>
+  </div>
+);
 
 SearchEvents.propTypes = {
-  handleSearchResult: PropTypes.func,
+  searchHandler: PropTypes.func,
 };
 
 SearchEvents.defaultProps = {
-  handleSearchResult: () => {},
+  searchHandler: () => {},
 };
 
 export default SearchEvents;
