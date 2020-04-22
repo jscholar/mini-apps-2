@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const SearchEvents = ({ searchHandler, queryChangeHandler }) => (
+const EventsSearch = ({ searchHandler, queryChangeHandler }) => (
   <div>
     <input
       type="text"
@@ -23,14 +23,14 @@ const SearchEvents = ({ searchHandler, queryChangeHandler }) => (
   </div>
 );
 
-SearchEvents.propTypes = {
+EventsSearch.propTypes = {
   searchHandler: PropTypes.func,
   queryChangeHandler: PropTypes.func,
 };
 
-SearchEvents.defaultProps = {
+EventsSearch.defaultProps = {
   searchHandler: () => {},
   queryChangeHandler: () => {},
 };
 
-export default SearchEvents;
+export default EventsSearch;

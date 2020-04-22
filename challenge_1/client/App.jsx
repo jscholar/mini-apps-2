@@ -42,7 +42,7 @@ class App extends Component {
           marginPagesDisplayed={2}
           pageRangeDisplayed={5}
           onPageChange={({ selected }) => {
-            // ReactPaginate is 0 indexed. json-server is 1 indexed
+            // ReactPaginate is 0 indexed
             this.handleSearch(selected + 1);
           }}
         />
