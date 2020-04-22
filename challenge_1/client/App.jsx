@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+
 import Events from './components/Events';
 import EventsSearch from './components/EventsSearch';
 
@@ -20,8 +21,8 @@ class App extends Component {
     return (
       <div>
         Events in Human History
-        <Events events={events} />
         <EventsSearch handleSearchResult={this.searchResultHandler} />
+        <Events events={events} />
       </div>
     );
   }
