@@ -2,6 +2,7 @@
 /* There's no better key to use here       */
 import React, { useState } from 'react';
 import Frame from './Frame';
+import NumberPad from './NumberPad';
 
 const ScoreCard = () => {
   const initialScores = [];
@@ -29,6 +30,8 @@ const ScoreCard = () => {
         </tbody>
 
       </table>
+
+      <NumberPad selectNumber={console.log} />
     </div>
   );
 };
