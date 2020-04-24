@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import Chart from 'chart.js';
 
 import fetchBPIHistory from '../api/fetchBPIHistory';
@@ -20,11 +20,16 @@ const BPIChart = () => {
           data: {
             labels: bpiTuples.map(([label]) => label),
             datasets: [{
-              backgroundColor: 'rgba(255, 255, 0, 0.3)',
+              label: 'BPI history',
+              fill: false,
+              lineTension: 0,
+              backgroundColor: 'rgba(255, 220, 0, 0.3)',
+              borderColor: 'rgba(255, 200, 0, 1.0)',
               data: bpiTuples.map(([, value]) => value),
             }],
           },
         });
+        bpiChart.render();
       });
   });
 
