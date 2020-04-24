@@ -20,6 +20,7 @@ const ScoreCard = () => {
     // Janky clone of scores. Depends on array of arrays structure.
     // But it's lightweight.
     const newScores = scores.map((frameScore) => [...frameScore]);
+
     newScores[currentFrame][currentPin] = pins;
     newScores[currentFrame][2] += pins;
     if (currentPin === 1) {
@@ -43,19 +44,10 @@ const ScoreCard = () => {
               if (frame > currentFrame) {
                 return <td key={frame} />;
               }
-              let totalScore = score;
-              if (pins1 === 10) {
-                // Strike
-                totalScore += scores[frame + 1][0] || 0;
-                totalScore += scores[frame + 1][1] || scores[frame + 2][1] || 0;
-              } else if (pins1 + pins2 === 10) {
-                // Spare
-                totalScore += scores[frame + 1][0] || 0;
-              }
               return (
                 <td key={frame}>
                   <Frame
-                    totalScore={totalScore}
+                    totalScore={score}
                     pins1={pins1}
                     pins2={pins2}
                   />
@@ -67,7 +59,7 @@ const ScoreCard = () => {
 
       </table>
 
-      <NumberPad selectNumber={scoreNext} />
+      <NumberPad max={10 - scores[currentFrame][0]} selectNumber={scoreNext} />
     </div>
   );
 };
