@@ -5,7 +5,7 @@ const { getBPIHistory } = require('./api/coindesk');
 
 const app = express();
 
-app.use('/', express.static(path.resolve(__dirname, 'public')));
+app.use('/', express.static(path.resolve(__dirname, '..', 'public')));
 
 app.get('/pricehistory', (req, res) => {
   getBPIHistory()

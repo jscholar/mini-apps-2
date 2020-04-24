@@ -1,9 +1,10 @@
 import React from 'react';
+import BPIChart from './components/BPIChart';
 
-const App = () => {
+const App = () => (
   <div>
-    App
+    <BPIChart />
   </div>
-}
+);
 
 export default App;
