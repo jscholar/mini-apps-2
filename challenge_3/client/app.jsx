@@ -1,9 +1,11 @@
 import ReactDOM from 'react-dom';
 import React from 'react';
 
+import ScoreCard from './components/ScoreCard';
+
 const App = () => (
   <div>
-    Bowling App
+    <ScoreCard />
   </div>
 );
 
