@@ -22,7 +22,7 @@ const NumberPad = ({ selectNumber }) => (
         <td><NumberPadButton number={9} clickHandler={selectNumber} /></td>
       </tr>
       <tr>
-        <td />
+        <td><NumberPadButton number={0} clickHandler={selectNumber} /></td>
         <td colSpan="2"><NumberPadButton number={10} clickHandler={selectNumber} /></td>
       </tr>
     </tbody>
