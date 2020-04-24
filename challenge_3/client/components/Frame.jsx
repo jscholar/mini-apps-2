@@ -17,15 +17,15 @@ const Frame = ({ totalScore, pins1, pins2 }) => (
 );
 
 Frame.propTypes = {
-  totalScore: PropTypes.string,
-  pins1: PropTypes.string,
-  pins2: PropTypes.string,
+  totalScore: PropTypes.number,
+  pins1: PropTypes.number,
+  pins2: PropTypes.number,
 };
 
 Frame.defaultProps = {
-  totalScore: '',
-  pins1: '',
-  pins2: '',
+  totalScore: -1,
+  pins1: -1,
+  pins2: -1,
 };
 
 export default Frame;
